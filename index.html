@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="RG Jour J" />
+<meta name="theme-color" content="#1b1d21" />
+<title>RG Jour J</title>
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="apple-touch-icon" href="icon-180.png" />
+<link rel="icon" href="icon-180.png" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div id="app">
+  <header class="barre-haut">
+    <div class="titre">
+      <div id="projet-nom" class="projet">RG Jour J</div>
+      <div id="jour-nom" class="jour">Aucune journée chargée</div>
+    </div>
+    <button id="btn-menu" class="icone" aria-label="Menu">⋯</button>
+  </header>
+
+  <main>
+    <!-- Accueil : aucune journée -->
+    <section id="vue-vide" class="vue">
+      <div class="carte accueil">
+        <div class="logo">RG</div>
+        <h1>RG Jour J</h1>
+        <p>Sur le Mac, dans RG : page <b>Jour J</b> → <b>Préparer l'iPhone</b>, puis envoyez le fichier par AirDrop.</p>
+        <p>Ici : <b>Charger la journée</b> et choisissez le fichier (app Fichiers, dossier Téléchargements).</p>
+        <label class="bouton principal">Charger la journée<input type="file" accept=".json,application/json" class="fichier" data-charger /></label>
+      </div>
+    </section>
+
+    <!-- Maintenant -->
+    <section id="vue-maintenant" class="vue" hidden>
+      <div class="horloge" id="horloge">--:--</div>
+      <div class="carte" id="carte-encours"></div>
+      <div class="carte prochain" id="carte-prochain"></div>
+      <h2>Déroulé</h2>
+      <div id="deroule" class="liste"></div>
+    </section>
+
+    <!-- Main courante -->
+    <section id="vue-main" class="vue" hidden>
+      <form id="saisie" class="carte saisie">
+        <div id="services" class="services"></div>
+        <div id="severites" class="severites"></div>
+        <textarea id="texte" rows="2" placeholder="Message…" aria-label="Message"></textarea>
+        <button class="bouton principal" id="btn-ajouter" type="submit">Ajouter</button>
+      </form>
+      <div class="entete-liste">
+        <h2>Main courante</h2>
+        <span id="a-envoyer" class="petit"></span>
+      </div>
+      <div id="messages" class="liste"></div>
+    </section>
+
+    <!-- Contacts -->
+    <section id="vue-contacts" class="vue" hidden>
+      <h2>Qui est là</h2>
+      <div id="presents" class="liste"></div>
+      <h2>Contacts utiles</h2>
+      <div id="contacts" class="liste"></div>
+      <div class="carte urgences">
+        <b>Urgences</b>
+        <div class="appels">
+          <a href="tel:15" class="appel">SAMU 15</a><a href="tel:18" class="appel">Pompiers 18</a><a href="tel:17" class="appel">Police 17</a><a href="tel:112" class="appel">112</a>
+        </div>
+        <div id="regie" class="petit"></div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="onglets" id="onglets" hidden>
+    <button data-vue="maintenant" class="actif"><span>⏱</span>Maintenant</button>
+    <button data-vue="main"><span>📋</span>Main courante</button>
+    <button data-vue="contacts"><span>☎︎</span>Contacts</button>
+  </nav>
+
+  <!-- Menu -->
+  <div id="menu" class="voile" hidden>
+    <div class="feuille">
+      <button id="btn-sync" class="bouton principal">⇅ Sync : envoyer la main courante au Mac</button>
+      <p class="petit">Crée un fichier avec vos messages ; choisissez AirDrop vers le Mac, puis dans RG : Main courante → Importer depuis l'iPhone. Vous pouvez synchroniser plusieurs fois : pas de doublon.</p>
+      <label class="bouton">Charger une autre journée<input type="file" accept=".json,application/json" class="fichier" data-charger /></label>
+      <button id="btn-fermer-menu" class="bouton discret">Fermer</button>
+      <p class="petit version" id="version"></p>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" hidden></div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
