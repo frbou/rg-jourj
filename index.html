@@ -60,6 +60,17 @@
       <div id="messages" class="liste"></div>
     </section>
 
+    <!-- Heures réelles -->
+    <section id="vue-heures" class="vue" hidden>
+      <div class="entete-liste">
+        <h2>Heures réelles</h2>
+        <span id="heures-etat" class="petit a-envoyer"></span>
+      </div>
+      <button id="btn-tous-prevu" class="bouton" hidden>Pointer tout le monde d'après le prévu</button>
+      <div id="heures" class="liste" style="margin-top:10px"></div>
+      <p class="petit">« Arrivée » et « Départ » notent l'heure du moment ; touchez une heure pour la corriger (un départ avant l'arrivée = le lendemain). Pause en minutes. Équipe embauchée uniquement.</p>
+    </section>
+
     <!-- Contacts -->
     <section id="vue-contacts" class="vue" hidden>
       <h2>Qui est là</h2>
@@ -79,14 +90,15 @@
   <nav class="onglets" id="onglets" hidden>
     <button data-vue="maintenant" class="actif"><span>⏱</span>Maintenant</button>
     <button data-vue="main"><span>📋</span>Main courante</button>
+    <button data-vue="heures"><span>🕘</span>Heures</button>
     <button data-vue="contacts"><span>☎︎</span>Contacts</button>
   </nav>
 
   <!-- Menu -->
   <div id="menu" class="voile" hidden>
     <div class="feuille">
-      <button id="btn-sync" class="bouton principal">⇅ Sync : envoyer la main courante au Mac</button>
-      <p class="petit">Crée un fichier avec vos messages ; choisissez AirDrop vers le Mac, puis dans RG : Main courante → Importer depuis l'iPhone. Vous pouvez synchroniser plusieurs fois : pas de doublon.</p>
+      <button id="btn-sync" class="bouton principal">⇅ Sync : envoyer au Mac</button>
+      <p class="petit">Crée un fichier avec vos messages et vos heures pointées ; choisissez AirDrop vers le Mac, puis dans RG : Main courante ou Pointage → Importer depuis l'iPhone. Vous pouvez synchroniser plusieurs fois : pas de doublon.</p>
       <label class="bouton">Charger une autre journée<input type="file" accept=".json,application/json" class="fichier" data-charger /></label>
       <button id="btn-fermer-menu" class="bouton discret">Fermer</button>
       <p class="petit version" id="version"></p>

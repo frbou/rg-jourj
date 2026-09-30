@@ -1,5 +1,5 @@
 // Cache hors connexion de l'app (les données restent dans l'iPhone, jamais ici).
-const CACHE = 'rg-jourj-1.0.0'
+const CACHE = 'rg-jourj-1.1.0'
 const FICHIERS = ['./', 'index.html', 'style.css', 'app.js', 'manifest.webmanifest', 'icon-180.png', 'icon-512.png']
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(FICHIERS)).then(() => self.skipWaiting()))
